@@ -1,4 +1,1 @@
-gunicorn
-flask
 gradio_client
-flask-cors
