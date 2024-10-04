@@ -1,5 +1,5 @@
 {
-    "name": "vercel-js-server",
+    "name": "vercel-prompt-server",
     "version": "1.0.0",
     "scripts": {
       "start": "vercel dev"

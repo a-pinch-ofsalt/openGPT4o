@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Sender</title>
+</head>
+<body>
+  <h1>Send a Prompt</h1>
+  <form id="promptForm">
+    <label for="prompt">Enter your prompt:</label><br><br>
+    <input type="text" id="prompt" name="prompt" required>
+    <button type="submit">Enter</button>
+  </form>
+
+  <div id="response"></div>
+
+  <script>
+    document.getElementById('promptForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      // Get the prompt from the input
+      const prompt = document.getElementById('prompt').value;
+
+      // Send a POST request to the API
+      const response = await fetch('/api/post', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt: prompt })
+      });
+
+      // Get the result from the response
+      const data = await response.json();
+
+      // Display the result on the page
+      const responseDiv = document.getElementById('response');
+      if (data.result) {
+        responseDiv.textContent = `Response: ${data.result}`;
+      } else if (data.error) {
+        responseDiv.textContent = `Error: ${data.error}`;
+      }
+    });
+  </script>
+</body>
+</html>
