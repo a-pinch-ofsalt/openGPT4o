@@ -1,7 +1,7 @@
 
-import { Client } from "@gradio/client";
+const gradio = require('@gradio/client');
 
-const client = Client.connect("KingNish/OpenGPT-4o");
+const client = gradio.Client.connect("KingNish/OpenGPT-4o");
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
