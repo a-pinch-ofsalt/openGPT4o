@@ -1,14 +1,14 @@
 
 import { Client } from "@gradio/client";
 
-const client = await Client.connect("KingNish/OpenGPT-4o");
+const client = Client.connect("KingNish/OpenGPT-4o");
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
       // Get data from the request body
       const prompt = req.body;
 
-    const result = await client.predict("/chat", { 		
+    const result = client.predict("/chat", { 		
 		user_prompt: {"text": prompt,"files":[]}, 
     });
   
